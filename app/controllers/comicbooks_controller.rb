@@ -1,15 +1,16 @@
 class ComicbooksController < ApplicationController
 	
 	   def index
-     @comicbooks = Comicbook.paginate(page: params[:page], per_page: 5)
 
-     render json: {data: @comicbooks, meta: {
-      :current_page => @comicbooks.current_page,
-      :per_page => @comicbooks.per_page,
-      :total_entries => @comicbooks.total_entries,
-      :previous_page => @comicbooks.previous_page,
-      :next_page => @comicbooks.next_page
-    }}
+     @comicbooks = Comicbook.paginate(page: params[:page], per_page: 2)
+
+     render json: @comicbooks,meta: {
+           :current_page => @comicbooks.current_page,
+         :per_page => @comicbooks.per_page,
+         :total_entries => @comicbooks.total_entries,
+         :previous_page => @comicbooks.previous_page,
+         :next_page => @comicbooks.next_page
+         },adapter: :json
     end
 
     def create
@@ -28,7 +29,8 @@ class ComicbooksController < ApplicationController
 
     def show
       @comicbook = Comicbook.find(params[:id])
-      render json: @comicbook
+      render json: @comicbook,serializer: ComicbookSerializer
+       #render json: {data: @comicbook, image: rails_blob_url(@comicbook.image,disposition: "attachment")}
     end 
 
     def update

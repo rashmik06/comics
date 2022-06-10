@@ -14,6 +14,8 @@ gem 'puma', '~> 4.1'
 gem 'sidekiq'
 gem 'redis'
 
+gem 'active_model_serializers' 
+
 gem 'will_paginate', '~> 3.3'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
