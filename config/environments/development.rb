@@ -7,6 +7,8 @@ Rails.application.configure do
   config.cache_classes = false
 
   # Do not eager load code on boot.
+
+
   config.eager_load = false
 
   config.action_controller.asset_host = "http://localhost:3000"
@@ -30,6 +32,9 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
+  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000}
+
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

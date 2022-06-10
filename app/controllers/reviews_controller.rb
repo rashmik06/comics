@@ -5,19 +5,19 @@ class ReviewsController < ApplicationController
     @comicbook = Comicbook.find(params[:comicbook_id])
 
     @review = @comicbook.reviews.create(review_params)
-    render json: {commicbook: @comicbook, review: @review}
+    render json: @review
   end
 
   def show
-    debugger
+    
     @comicbook = Comicbook.find(params[:comicbook_id])
     @review = @comicbook.reviews.find(params[:id])
-    render json: {comicbook: @comicbook, review: @review}
+    render json: @review
   end
 
   def update
     @comicbook = Comicbook.find(params[:comicbook_id])
-    debugger
+    
     @review = @comicbook.reviews.find(params[:id])
     @review.update(review_params)
     render json: @review
