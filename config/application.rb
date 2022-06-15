@@ -35,5 +35,6 @@ module Comics
     config.api_only = true
     config.autoloader = :classic
     config.active_job.queue_adapter = :sidekiq
+    #config.factory_bot.definition_file_paths = ["custom/factories"]
   end
 end

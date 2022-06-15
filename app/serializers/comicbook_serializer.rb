@@ -1,10 +1,16 @@
 class ComicbookSerializer < ActiveModel::Serializer
 
-  attributes :id,:title,:description, :publisher_id,:number,:artist,:writer,:image
+  include Rails.application.routes.url_helpers
+
+
+  attributes :id,:title,:description, :publisher_id,:number,:artist,:image
 
   def image
-    
-    Rails.application.routes.url_helpers.url_for(self.object.image)
+    if self.object.image.attached?
+    url_for(self.object.image)
+  else
+    nil
+  end
   end
 
  # attribute :image do |object|

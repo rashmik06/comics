@@ -70,6 +70,7 @@ class PublishersController < ApplicationController
 
    private
    def publisher_params
+    debugger
         params.require(:publisher).permit(:name, comicbooks_attributes: [ :title, :description,:publisher_id,:number,:artist,:writer])
    end
 

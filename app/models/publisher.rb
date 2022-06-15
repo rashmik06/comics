@@ -5,6 +5,7 @@ class Publisher < ApplicationRecord
 	has_many :comicbooks, dependent: :destroy
   has_many :replies, dependent: :destroy
 	has_one_base64_attached :image
+   validates :name, presence: true
 
 	accepts_nested_attributes_for :comicbooks
 end
